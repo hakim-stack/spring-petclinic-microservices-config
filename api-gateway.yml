@@ -2,10 +2,18 @@ zuul:
   prefix: /api
   ignoredServices: '*'
   routes:
-    vets-service: /vet/**
-    visits-service: /visit/**
-    customers-service: /customer/**
-    api-gateway: /gateway/**
+    vets-service:
+      path: /vet/**
+      serviceId: vets-service
+    visits-service:
+      path: /visit/**
+      serviceId: visits-service
+    customers-service:
+      path: /customer/**
+      serviceId: customers-service
+    api-gateway:
+      path: /gateway/**
+      serviceId: api-gateway
 
 server:
   port: 8080
@@ -24,6 +32,7 @@ spring:
       on-profile: default
   zipkin:
     baseUrl: http://tracing-server:9411
+
 eureka:
   instance:
     preferIpAddress: false
